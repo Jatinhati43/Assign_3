@@ -1,3 +1,7 @@
+// Description: This program reads a text file (sample.txt),
+//              counts the frequency of each alphabet character (ignoring digits and special characters),
+
+
 package main
 
 import (
@@ -5,13 +9,13 @@ import (
 	"log"
 	"path/filepath"
 
-	"ASSIGN_3/internal/charcount"
+	"github.com/Jatinhati43/Assign_3/internal/charcount"
 )
 
 func main() {
 	filePath := filepath.Join(".", "sample.txt")
 
-	counts, err := charcount.CountCharactersFromFile(filePath)
+	counts, err := charcount.CountCharacters(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
