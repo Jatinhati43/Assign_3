@@ -9,6 +9,11 @@ import (
 	"github.com/Jatinhati43/Assign_3/internal/charcount"
 )
 
+// main reads a text file path from the command line argument,
+// reads the file line by line, counts the occurrence of each
+// alphabetic character (ignoring digits and special characters)
+// using the CountChars function from the internal charcount package,
+// and then prints the aggregated counts to the console.
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println("Usage: go run main.go <file-path>")

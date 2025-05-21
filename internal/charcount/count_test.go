@@ -5,6 +5,11 @@ import (
 	"testing"
 )
 
+// TestCountChars tests the CountChars function to verify that it
+// correctly counts the occurrences of each alphabetic character (case-insensitive)
+// in a given input string. It ensures digits, special characters, and punctuation
+// are ignored. Multiple test cases cover empty inputs, mixed cases, and inputs
+// containing digits and special characters.
 func TestCountChars(t *testing.T) {
 	tests := []struct {
 		name     string
