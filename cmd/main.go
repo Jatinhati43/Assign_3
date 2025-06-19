@@ -1,27 +1,35 @@
-// Description: This program reads a text file (sample.txt),
-//              counts the frequency of each alphabet character (ignoring digits and special characters),
-
-
 package main
 
 import (
 	"fmt"
 	"log"
-	"path/filepath"
+	"os"
 
 	"github.com/Jatinhati43/Assign_3/internal/charcount"
+	"github.com/Jatinhati43/Assign_3/internal/File_reader"
 )
 
 func main() {
-	filePath := filepath.Join(".", "sample.txt")
-
-	counts, err := charcount.CountCharacters(filePath)
-	if err != nil {
-		log.Fatal(err)
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: go run main.go <file-path>")
+		return
 	}
 
-	fmt.Println("Character Frequencies:")
-	for ch, count := range counts {
-		fmt.Printf("%c: %d\n", ch, count)
+	lines, err := reader.ReadLines(os.Args[1])
+	if err != nil {
+		log.Fatalf("Failed to read file: %v", err)
+	}
+
+	charCounts := make(map[rune]int)
+	for _, line := range lines {
+		lineCounts := charcount.CountChars(line)
+		for k, v := range lineCounts {
+			charCounts[k] += v
+		}
+	}
+
+	fmt.Println("Character counts (letters only):")
+	for ch, count := range charCounts {
+		fmt.Printf("%c : %d\n", ch, count)
 	}
 }
